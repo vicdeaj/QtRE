@@ -7,6 +7,7 @@ import Taint.InputExpSolver;
 import Taint.QTaintEngine;
 import Moc.QtConnectSolver;
 import Util.*;
+import ghidra.Ghidra;
 import ghidra.app.plugin.core.analysis.AutoAnalysisManager;
 import ghidra.app.plugin.processors.sleigh.SleighLanguageProvider;
 import ghidra.base.project.GhidraProject;
@@ -50,12 +51,11 @@ public class Analyzer {
 
         LanguageProvider languageProvider;
         try {
-            languageProvider = new SleighLanguageProvider();
+            languageProvider = SleighLanguageProvider.getSleighLanguageProvider();
         } catch (Exception e) {
             System.out.println("Unable to build language provider.");
             return;
         }
-
         Language language = languageProvider.getLanguage(new LanguageID(Environment.LANGUAGE_NAME));
 
         CompilerSpec compilerSpec;
@@ -88,7 +88,7 @@ public class Analyzer {
         System.out.println("Processor used : " + program.getLanguage().getProcessor().toString());
 
         long startTime = System.currentTimeMillis();
-        if (GhidraProgramUtilities.shouldAskToAnalyze(program)) { // if the program has not been analyzed yet...
+      // if (GhidraProgramUtilities.shouldAskToAnalyze(program)) { // if the program has not been analyzed yet...
             // Use the Ghidra headless analyzer to analyze the loaded binary file
             int txId = program.startTransaction("Analysis");
             AutoAnalysisManager mgr = AutoAnalysisManager.getAnalysisManager(program);
@@ -101,8 +101,9 @@ public class Analyzer {
             mgr.startAnalysis(TimeoutTaskMonitor.timeoutIn(Configs.DISASSEMBLE_TIMEOUT, TimeUnit.SECONDS));
 
             // Marked as analyzed
-            GhidraProgramUtilities.setAnalyzedFlag(program, true);
-        }
+            GhidraProgramUtilities.markProgramAnalyzed(program);
+            //GhidraProgramUtilities.setAnalyzedFlag(program, true);
+      //  }
         analysisTime = System.currentTimeMillis() - startTime;
     }
 

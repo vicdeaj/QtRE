@@ -14,8 +14,8 @@
     <!-- For example, setting the Java version -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
     <!-- Project Dependencies -->
@@ -31,7 +31,7 @@
         <dependency>
             <groupId>ghidra</groupId>
             <artifactId>ghidra</artifactId>
-            <version>9.2.2</version> <!-- TODO: Specify your Ghidra version here -->
+            <version>10.3.3</version> <!-- TODO: Specify your Ghidra version here -->
             <scope>system</scope>
             <systemPath>${project.basedir}/lib/ghidra.jar</systemPath>
         </dependency>

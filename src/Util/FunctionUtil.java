@@ -153,7 +153,7 @@ public class FunctionUtil {
             String funcName = FunctionUtil.getFunctionSignature(f);
             if (funcName.startsWith("connect(") || funcName.startsWith("connect<") ||
                 funcName.startsWith("QObject::connect(") || funcName.startsWith("QObject::connect<") ||
-                funcName.startsWith("connectImpl(")) {
+                funcName.startsWith("connectImpl(") || funcName.startsWith("QObject::connectImpl(") ) {
                 if (!results.contains(f.getEntryPoint())) {
                     results.add(f.getEntryPoint());
                 }

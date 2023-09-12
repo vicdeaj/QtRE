@@ -14,7 +14,9 @@ For more details, please refer to our full paper (in USENIX Security 2023): [Egg
 
 ## Prerequisites
 
-QtRE was developed and tested on Java 11.0.19 and Ghidra [v9.2.2](https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_9.2.2_build). Please carefully select your build environment before proceeding, as some Ghidra APIs used in this project may be deprecated in newer versions.
+~~QtRE was developed and tested on Java 11.0.19 and Ghidra [v9.2.2](https://github.com/NationalSecurityAgency/ghidra/releases/tag/Ghidra_9.2.2_build). Please carefully select your build environment before proceeding, as some Ghidra APIs used in this project may be deprecated in newer versions.~~
+
+**I have tested this with java 17 and ghidra v10.3.3, producing the same results as with the old version using the example binary, minor modifications needet to be done due to modifications of the apis**
 
 To build this project, we recommend using [Apache Maven](https://maven.apache.org/). Below are the detailed instructions:
 
